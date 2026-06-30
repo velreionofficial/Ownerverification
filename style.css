@@ -28,35 +28,47 @@ body{
 
 h1{
     color:#D4AF37;
-    font-size:52px;
+    font-size:48px;
     letter-spacing:4px;
-    margin-bottom:12px;
+    margin-bottom:10px;
+}
+
+.container img{
+    width:80px;
+    margin:10px auto 15px;
+    display:block;
 }
 
 .sub{
     color:#cfcfcf;
-    font-size:20px;
-    margin:15px 0 30px;
+    font-size:18px;
+    margin-bottom:30px;
 }
 
 input{
     width:100%;
-    padding:16px;
+    padding:15px;
     border:none;
     border-radius:12px;
-    font-size:18px;
+    background:#222;
+    color:#fff;
+    font-size:17px;
     margin-bottom:20px;
     outline:none;
 }
 
+input::placeholder{
+    color:#888;
+}
+
 button{
     width:100%;
-    padding:16px;
+    padding:15px;
     border:none;
     border-radius:12px;
     background:#D4AF37;
     color:#000;
-    font-size:22px;
+    font-size:18px;
     font-weight:bold;
     cursor:pointer;
     transition:.3s;
@@ -64,6 +76,7 @@ button{
 
 button:hover{
     background:#f2cf63;
+    transform:translateY(-2px);
 }
 
 #result{
@@ -77,27 +90,30 @@ button:hover{
     border-radius:18px;
     padding:30px;
     box-shadow:0 0 20px rgba(212,175,55,.08);
+    animation:fadeIn .4s ease;
 }
 
 .verify-card img{
     width:90px;
-    margin-bottom:15px;
+    display:block;
+    margin:0 auto 15px;
 }
 
 .verified-title{
     text-align:center;
     color:#D4AF37;
-    font-size:34px;
+    font-size:30px;
     font-weight:700;
-    margin:8px 0;
+    margin:10px 0 5px;
 }
 
 .certificate-subtitle{
     text-align:center;
     color:#9f9f9f;
-    margin-bottom:20px;
-    font-size:16px;
+    font-size:14px;
     letter-spacing:1px;
+    margin-bottom:22px;
+    text-transform:uppercase;
 }
 
 .verify-table{
@@ -110,23 +126,36 @@ button:hover{
 }
 
 .verify-table td{
-    padding:14px 8px;
-    font-size:17px;
+    padding:13px 8px;
+    font-size:16px;
 }
 
 .verify-table td:first-child{
     color:#9f9f9f;
     width:45%;
+    text-align:left;
 }
 
 .verify-table td:last-child{
-    text-align:right;
     color:#fff;
+    text-align:right;
     font-weight:600;
 }
 
 .verified{
     color:#00ff66 !important;
+    font-weight:bold;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 @media(max-width:600px){
@@ -136,11 +165,15 @@ button:hover{
 }
 
 h1{
-    font-size:42px;
+    font-size:38px;
+}
+
+.container img{
+    width:70px;
 }
 
 .sub{
-    font-size:16px;
+    font-size:15px;
 }
 
 .verify-card{
@@ -152,20 +185,20 @@ h1{
 }
 
 .verified-title{
-    font-size:26px;
+    font-size:24px;
 }
 
 .certificate-subtitle{
-    font-size:14px;
+    font-size:12px;
 }
 
 .verify-table td{
-    font-size:15px;
-    padding:12px 5px;
+    font-size:14px;
+    padding:10px 4px;
 }
 
 button{
-    font-size:20px;
+    font-size:18px;
 }
 
 }

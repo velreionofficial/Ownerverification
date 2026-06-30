@@ -1,4 +1,5 @@
 const API_URL = "https://script.google.com/macros/s/AKfycby3hJV8r9EIL0iggthm80iWzYN9ZyRhhBPaiGxGEQ_QlMF2z77ChnK1NAfwicGPeYE/exec";
+
 async function verifyOwner() {
 
     const id = document.getElementById("certificate").value.trim().toUpperCase();
@@ -7,7 +8,7 @@ async function verifyOwner() {
     if (!id) {
         result.innerHTML = `
         <div class="verify-card">
-            <h2 style="color:#ff4444;">Enter Certificate ID</h2>
+            <h2 style="color:#ff4444;text-align:center;">Enter Certificate ID</h2>
         </div>`;
         return;
     }
@@ -27,53 +28,120 @@ async function verifyOwner() {
             result.innerHTML = `
             <div class="verify-card">
 
-                <h2>${data.collection}</h2>
+                <div style="text-align:center;">
+                    <img src="images/gold-logo.png" alt="VELREION Logo">
+                </div>
 
-                <p><strong>Owner:</strong> ${data.owner}</p>
+                <h2 class="verified-title">
+                    ✔ VERIFIED OWNER
+                </h2>
 
-                <p><strong>Certificate ID:</strong> ${data.certificateId}</p>
-
-                <p><strong>Product:</strong> ${data.product}</p>
-
-                <p><strong>Size:</strong> ${data.size}</p>
-
-                <p><strong>Color:</strong> ${data.color}</p>
-
-                <p><strong>Edition:</strong> ${data.edition}</p>
-
-                <p style="color:#66ff66;font-size:26px;margin-top:20px;">
-                ✔ Ownership Verified
+                <p class="certificate-subtitle">
+                    Official Ownership Certificate
                 </p>
 
-            </div>`;
-        }
+                <table class="verify-table">
 
-        else {
+                    <tr>
+                        <td>Certificate</td>
+                        <td>${data.certificateNo}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Owner</td>
+                        <td>${data.owner}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone</td>
+                        <td>******${String(data.phone).slice(-4)}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Collection</td>
+                        <td>${data.collection}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Product</td>
+                        <td>${data.product}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Certificate ID</td>
+                        <td>${data.certificateId}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Edition</td>
+                        <td>${data.edition}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Size</td>
+                        <td>${data.size}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Color</td>
+                        <td>${data.color}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Purchase Date</td>
+                        <td>${data.purchaseDate}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Verification Date</td>
+                        <td>${data.verificationDate}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Status</td>
+                        <td class="verified">${data.status}</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            `;
+
+        } else {
 
             result.innerHTML = `
             <div class="verify-card">
 
-            <h2 style="color:#ff4444;">INVALID CERTIFICATE</h2>
+                <h2 style="color:#ff4444;text-align:center;">
+                    ❌ INVALID CERTIFICATE
+                </h2>
 
-            <p>This Certificate ID does not exist.</p>
+                <p style="text-align:center;color:#9f9f9f;">
+                    This Certificate ID does not exist.
+                </p>
 
-            </div>`;
+            </div>
+            `;
+
         }
 
-    }
+    } catch (error) {
 
-    catch (err) {
+        console.error(error);
 
         result.innerHTML = `
         <div class="verify-card">
 
-        <h2 style="color:#ff4444;">SERVER ERROR</h2>
+            <h2 style="color:#ff4444;text-align:center;">
+                SERVER ERROR
+            </h2>
 
-        <p>Unable to connect with database.</p>
+            <p style="text-align:center;color:#9f9f9f;">
+                Unable to connect with database.
+            </p>
 
-        </div>`;
-
-        console.log(err);
+        </div>
+        `;
 
     }
 
