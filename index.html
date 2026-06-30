@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,28 +11,32 @@
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>VELREION</h1>
-<img src="images/gold-logo.png" width="80">
-    <p class="sub">
-        Official Ownership Verification
-    </p>
+        <h1>VELREION</h1>
 
-    <input
-        type="text"
-        id="certificate"
-        placeholder="Enter Certificate ID">
+        <img src="images/gold-logo.png" alt="VELREION Logo" width="80">
 
-    <button onclick="verifyOwner()">
-        Verify Ownership
-    </button>
+        <p class="sub">
+            Official Ownership Verification
+        </p>
 
-    <div id="result"></div>
+        <input
+            type="text"
+            id="certificate"
+            placeholder="Enter Certificate ID"
+            autocomplete="off">
 
-</div>
+        <button onclick="verifyOwner()">
+            Verify Ownership
+        </button>
 
-<script src="script.js"></script>
+        <div id="result"></div>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>

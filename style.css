@@ -7,54 +7,59 @@
 
 body{
     background:#0b0b0b;
-    color:white;
+    color:#fff;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    min-height:100vh;
+    padding:25px;
 }
 
 .container{
-    width:420px;
+    width:100%;
+    max-width:520px;
     background:#171717;
-    padding:40px;
-    border-radius:18px;
+    border:1px solid #D4AF37;
+    border-radius:22px;
+    padding:40px 30px;
     text-align:center;
-    border:1px solid #d4af37;
-    box-shadow:0 0 30px rgba(212,175,55,.25);
+    box-shadow:0 0 30px rgba(212,175,55,.20);
 }
 
 h1{
-    color:#d4af37;
-    font-size:42px;
+    color:#D4AF37;
+    font-size:52px;
     letter-spacing:4px;
+    margin-bottom:12px;
 }
 
 .sub{
-    margin-top:12px;
     color:#cfcfcf;
-    margin-bottom:30px;
+    font-size:20px;
+    margin:15px 0 30px;
 }
 
 input{
     width:100%;
-    padding:15px;
+    padding:16px;
     border:none;
-    border-radius:10px;
-    font-size:16px;
+    border-radius:12px;
+    font-size:18px;
     margin-bottom:20px;
+    outline:none;
 }
 
 button{
     width:100%;
-    padding:15px;
+    padding:16px;
     border:none;
-    border-radius:10px;
-    background:#d4af37;
-    color:black;
-    font-size:18px;
+    border-radius:12px;
+    background:#D4AF37;
+    color:#000;
+    font-size:22px;
     font-weight:bold;
     cursor:pointer;
+    transition:.3s;
 }
 
 button:hover{
@@ -63,60 +68,8 @@ button:hover{
 
 #result{
     margin-top:25px;
-    font-size:18px;
-    font-weight:bold;
-}
-#result{
-    margin-top:25px;
-    font-size:18px;
-    font-weight:bold;
 }
 
-/* 👇 Iske niche paste karna */
-
-.verify-card{
-    margin-top:25px;
-    background:#171717;
-    border:1px solid #333;
-    border-radius:18px;
-    padding:25px;
-}
-
-.verified-title{
-    color:#D4AF37;
-    text-align:center;
-    margin-bottom:20px;
-    font-size:28px;
-}
-
-.verify-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-.verify-table tr{
-    border-bottom:1px solid #2f2f2f;
-}
-
-.verify-table td{
-    padding:14px 6px;
-    color:white;
-    font-size:18px;
-}
-
-.verify-table td:first-child{
-    color:#9f9f9f;
-    width:45%;
-}
-
-.verify-table td:last-child{
-    text-align:right;
-    font-weight:bold;
-}
-
-.verified{
-    color:#00ff66;
-}
 .verify-card{
     margin-top:25px;
     background:#161616;
@@ -124,30 +77,32 @@ button:hover{
     border-radius:18px;
     padding:30px;
     box-shadow:0 0 20px rgba(212,175,55,.08);
-
-    max-width:520px;
-    margin:auto;
 }
 
 .verify-card img{
-    width:100px;
-    margin-bottom:12px;
+    width:90px;
+    margin-bottom:15px;
 }
 
 .verified-title{
     text-align:center;
     color:#D4AF37;
-    font-size:28px;
+    font-size:34px;
     font-weight:700;
-    margin:10px 0 20px;
-    white-space: nowrap;
-    letter-spacing:0.5px;
+    margin:8px 0;
+}
+
+.certificate-subtitle{
+    text-align:center;
+    color:#9f9f9f;
+    margin-bottom:20px;
+    font-size:16px;
+    letter-spacing:1px;
 }
 
 .verify-table{
     width:100%;
     border-collapse:collapse;
-    margin-top:15px;
 }
 
 .verify-table tr{
@@ -160,13 +115,13 @@ button:hover{
 }
 
 .verify-table td:first-child{
-    color:#9d9d9d;
-    width:42%;
+    color:#9f9f9f;
+    width:45%;
 }
 
 .verify-table td:last-child{
-    color:#fff;
     text-align:right;
+    color:#fff;
     font-weight:600;
 }
 
@@ -176,62 +131,16 @@ button:hover{
 
 @media(max-width:600px){
 
-.verify-card{
-    padding:18px;
-}
-
-.verify-card img{
-    width:80px;
-}
-
-.verified-title{
-    font-size:26px;
-}
-
-.verify-table td{
-    font-size:15px;
-    padding:12px 5px;
-}
-
-}
-
-.certificate-subtitle{
-    text-align:center;
-    color:#9f9f9f;
-    font-size:15px;
-    margin-top:-12px;
-    margin-bottom:20px;
-    letter-spacing:1px;
-}
-
-.verify-card{
-    animation:fadeIn .35s ease;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@media(max-width:600px){
-
 .container{
-    width:95%;
-    padding:25px;
+    padding:25px 18px;
 }
 
 h1{
-    font-size:34px;
+    font-size:42px;
 }
 
 .sub{
-    font-size:15px;
+    font-size:16px;
 }
 
 .verify-card{
@@ -243,16 +152,20 @@ h1{
 }
 
 .verified-title{
-    font-size:22px;
-    white-space:normal;
+    font-size:26px;
 }
 
 .certificate-subtitle{
-    font-size:13px;
+    font-size:14px;
 }
 
 .verify-table td{
-    font-size:14px;
+    font-size:15px;
+    padding:12px 5px;
+}
+
+button{
+    font-size:20px;
 }
 
 }

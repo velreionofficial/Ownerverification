@@ -1,162 +1,79 @@
-function verifyOwner() {
+const API_URL = "https://script.google.com/macros/s/AKfycby3hJV8r9EIL0iggthm80iWzYN9ZyRhhBPaiGxGEQ_QlMF2z77ChnK1NAfwicGPeYE/exec";
+async function verifyOwner() {
 
     const id = document.getElementById("certificate").value.trim().toUpperCase();
     const result = document.getElementById("result");
 
-    const database = {
+    if (!id) {
+        result.innerHTML = `
+        <div class="verify-card">
+            <h2 style="color:#ff4444;">Enter Certificate ID</h2>
+        </div>`;
+        return;
+    }
 
-        "AUR-0001": {
-            level: "AUREUM",
-            owner: "Prakash Raj",
-            phone: "9876542086",
-            product: "Phoenix Oversized Tee",
-            size: "XL",
-            color: "Black",
-            purchaseDate: "30 June 2026",
-            verificationDate: "30 June 2026",
-            edition: "Limited Edition (01 of 05)",
-            certificateNo: "VLR-AUR001-001",
-            status: "VERIFIED",
-            colorCode: "#D4AF37",
-            logo: "images/gold-logo.png"
-        },
+    result.innerHTML = `
+    <div class="verify-card">
+        <p style="text-align:center;">Checking ownership...</p>
+    </div>`;
 
-        "ARG-0001": {
-            level: "ARGENTUM",
-            owner: "Rahul Kumar",
-            phone: "9123456789",
-            product: "Phoenix Oversized Tee",
-            size: "L",
-            color: "White",
-            purchaseDate: "30 June 2026",
-            verificationDate: "30 June 2026",
-            edition: "Limited Edition (02 of 05)",
-            certificateNo: "VLR-ARG001-001",
-            status: "VERIFIED",
-            colorCode: "silver",
-            logo: "images/gold-logo.png"
-        },
+    try {
 
-        "FER-0001": {
-            level: "FERRUM",
-            owner: "Demo User",
-            phone: "9988776655",
-            product: "Phoenix Regular Tee",
-            size: "M",
-            color: "Brown",
-            purchaseDate: "30 June 2026",
-            verificationDate: "30 June 2026",
-            edition: "Limited Edition (03 of 05)",
-            certificateNo: "VLR-FER001-001",
-            status: "VERIFIED",
-            colorCode: "#8B4513",
-            logo: "images/gold-logo.png"
+        const response = await fetch(API_URL + "?id=" + encodeURIComponent(id));
+        const data = await response.json();
+
+        if (data.found) {
+
+            result.innerHTML = `
+            <div class="verify-card">
+
+                <h2>${data.collection}</h2>
+
+                <p><strong>Owner:</strong> ${data.owner}</p>
+
+                <p><strong>Certificate ID:</strong> ${data.certificateId}</p>
+
+                <p><strong>Product:</strong> ${data.product}</p>
+
+                <p><strong>Size:</strong> ${data.size}</p>
+
+                <p><strong>Color:</strong> ${data.color}</p>
+
+                <p><strong>Edition:</strong> ${data.edition}</p>
+
+                <p style="color:#66ff66;font-size:26px;margin-top:20px;">
+                ✔ Ownership Verified
+                </p>
+
+            </div>`;
         }
 
-    };
+        else {
 
-    if (database[id]) {
+            result.innerHTML = `
+            <div class="verify-card">
 
-        const data = database[id];
+            <h2 style="color:#ff4444;">INVALID CERTIFICATE</h2>
 
-        result.innerHTML = `
+            <p>This Certificate ID does not exist.</p>
 
-<div class="verify-card">
+            </div>`;
+        }
 
-<div style="text-align:center;margin-bottom:20px;">
-<img src="${data.logo}" alt="VELREION Logo">
-</div>
+    }
 
-<h2 class="verified-title">
-✔ VERIFIED OWNER
-</h2>
-<p class="certificate-subtitle">Official Ownership Certificate</p>
-
-<table class="verify-table">
-
-<tr>
-<td>Certificate</td>
-<td>${data.certificateNo}</td>
-</tr>
-
-<tr>
-<td>Owner</td>
-<td>${data.owner}</td>
-</tr>
-
-<tr>
-<td>Phone</td>
-<td>******${data.phone.slice(-4)}</td>
-</tr>
-
-<tr>
-<td>Collection</td>
-<td>${data.level}</td>
-</tr>
-
-<tr>
-<td>Product</td>
-<td>${data.product}</td>
-</tr>
-
-<tr>
-<td>Certificate ID</td>
-<td>${id}</td>
-</tr>
-
-<tr>
-<td>Edition</td>
-<td>${data.edition}</td>
-</tr>
-
-<tr>
-<td>Size</td>
-<td>${data.size}</td>
-</tr>
-
-<tr>
-<td>Color</td>
-<td>${data.color}</td>
-</tr>
-
-<tr>
-<td>Purchase Date</td>
-<td>${data.purchaseDate}</td>
-</tr>
-
-<tr>
-<td>Verification Date</td>
-<td>${data.verificationDate}</td>
-</tr>
-
-<tr>
-<td>Status</td>
-<td class="verified">${data.status}</td>
-</tr>
-
-</table>
-
-</div>
-
-`;
-
-    } else {
+    catch (err) {
 
         result.innerHTML = `
+        <div class="verify-card">
 
-<div class="verify-card">
+        <h2 style="color:#ff4444;">SERVER ERROR</h2>
 
-<h2 style="color:red;text-align:center;">
-❌ INVALID CERTIFICATE
-</h2>
+        <p>Unable to connect with database.</p>
 
-<p style="text-align:center;color:#999;">
-This Certificate ID does not exist.
-</p>
+        </div>`;
 
-</div>
-
-`;
+        console.log(err);
 
     }
 
